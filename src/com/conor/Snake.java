@@ -17,11 +17,23 @@ public class Snake implements Comparable<Snake>{
     //Need the override to format the Collection once it prints out
     @Override
     public String toString() {
-        return String.format("Name: %s, Venom ratings: %.2f", name, venomRating);
+        return String.format("Name:  %s, Venom ratings: %.2f", name, venomRating);
     }
 
     @Override
     public int compareTo(Snake o) {
-        return 0;
+
+        if (this.venomRating < o.venomRating) {
+            return -1;
+        }
+
+        else if (this.venomRating > o.venomRating) {
+            return 1;
+        }
+
+        // Compare to UNICODE values rather than strings.
+        else {
+            return name.compareTo(o.name);
+        }
     }
 }
